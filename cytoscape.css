@@ -9,7 +9,7 @@ node, edge {
 /* Labels: */
 
 /*     color : The colour of the element's label. */
-    content : data(id) /*The text to display for an element's label.
+    content : data(id) /*The text to display for an element's label. */
 /*     font-family : A comma-separated list of font names to use on the label text. */
 /*     font-size : The size of the label text. */
 /*     font-style : A CSS font style to be applied to the label text. */
