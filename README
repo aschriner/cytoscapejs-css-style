@@ -1,0 +1,27 @@
+This little package allows you to define the stylesheet for a cytoscape.js graph in native css format (instead of the funky JSON/CSS mixture that cytoscape.js asks for (defined here: http://cytoscape.github.io/cytoscape.js/#style).  You write the style in CSS, then run the parser to generate the JSON.
+
+The file "cytoscapecssparser.py" should be placed in the same directory as a file called "cytoscape.css", which should contain valid CSS rules for styling a cytoscape.js visualization.  It will generate a json file called "cytoscapestyle.json" in the same directory.  
+
+Run "python cytoscapecssparser.py" from a command line (with Python installed, obviously) to generate the json file.  
+
+In cytoscape.js, you can load the generated json file like this:
+
+$("#cy").cytoscape({
+    ...
+    style: function(){
+            var json = null
+            $.ajax({
+                'async': false,
+                'global': false,
+                'url': 'css/cytoscapestyle.json',
+                'dataType': "json",
+                'success': function (data) {
+                    json = data;
+                }
+            })
+            return json
+        }()
+    ...
+})
+
+*Be advised loading the json file won't work if you are running from a local file!  You at least need to set up a server like http://docs.python.org/2/library/simplehttpserver.html 
